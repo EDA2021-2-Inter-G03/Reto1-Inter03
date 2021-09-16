@@ -26,6 +26,7 @@
 
 
 import config as cf
+import datetime as dt
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
 from DISClib.Algorithms.Sorting import insertionsort as ins
@@ -75,5 +76,8 @@ def sortcatalog(catalogo,tipo_ordenamiento):
         catalogo_ordenado = qs.sort(catalogo)
     else:
         catalogo_ordenado = catalogo
-    
     return catalogo_ordenado
+    
+def cmpArtworkByDateAcquired(artwork1, artwork2):
+    day=artwork1[12][0]+artwork1[12][1]
+# Funciones de ordenamiento
