@@ -20,6 +20,7 @@
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
+
 import config as cf
 import sys
 import controller
@@ -37,12 +38,13 @@ operación solicitada
 def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- requerimiento 1")
-    print("3- requerimiento 2")
-    print("4- requerimiento 3")
-    print("5- requerimiento 4")
-    print("6- requerimiento 5")
-    print("7- requerimiento 6")
+    print("2. Tamaño de la muestra")
+    print("3- requerimiento 1")
+    print("4- requerimiento 2")
+    print("5- requerimiento 3")
+    print("6- requerimiento 4")
+    print("7- requerimiento 5")
+    print("8- requerimiento 6")
 
 catalog = None
 
@@ -55,6 +57,19 @@ def loadData(catalog):
     Carga los libros en la estructura de datos
     """
     controller.loadData(catalog)
+
+def sublist(catalogo,muestra):
+    """
+    Crea una Sublista con un tamaño de muestra dado
+    """
+    if muestra <= lt.size(catalogo):
+        sublista = lt.subList(catalogo,0,muestra)
+    else:
+        sublista = "El tamaño de la muestra es mayor al tamaño del catalogo"
+    return sublista
+
+
+
 """
 Menu principal
 """
@@ -79,7 +94,22 @@ while True:
             print(obra['Title'])   
 
     elif int(inputs[0]) == 2:
-        pass
+        muestra = int(input("Escriba el tamaño de la muestra: "))
+        catalog = initCatalog()
+        loadData(catalog)
+        sublista = sublist(catalog["artworks"], muestra)
+        print(sublista)
+
+    elif int(inputs[0]) == 3:
+        print("Escoja el tipo de ordenamiento..")
+        print("1. Insertion")
+        print("2. Sheel")
+        print("3. Merge")
+        print("4. Quick")
+        tipo_ordenamiento = input("Escriba el numero de la opción: ")
+        catalog = initCatalog
+        loadData(catalog)
+        
 
     else:
         sys.exit(0)

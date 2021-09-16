@@ -28,6 +28,9 @@
 import config as cf
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
+from DISClib.Algorithms.Sorting import insertionsort as ins
+from DISClib.Algorithms.Sorting import mergesort as mer
+from DISClib.Algorithms.Sorting import quicksort as qs
 assert cf
 
 """
@@ -61,3 +64,16 @@ def addArtist(catalog, artist):
 # Funciones utilizadas para comparar elementos dentro de una lista
 
 # Funciones de ordenamiento
+def sortcatalog(catalogo,tipo_ordenamiento):
+    if tipo_ordenamiento == "1":
+         catalogo_ordenado = ins.sort(catalogo)
+    elif tipo_ordenamiento == "2":
+        catalogo_ordenado = mer.sort(catalogo)
+    elif tipo_ordenamiento == "3":
+        catalogo_ordenado = sa.sort(catalogo)
+    elif tipo_ordenamiento == "4":
+        catalogo_ordenado = qs.sort(catalogo)
+    else:
+        catalogo_ordenado = catalogo
+    
+    return catalogo_ordenado
