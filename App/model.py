@@ -37,7 +37,22 @@ los mismos.
 
 # Construccion de modelos
 
+def newCatalog():
+    catalog = {'artist': None,
+               'artworks': None,}
+
+    catalog['artist'] = lt.newList()
+    catalog['artworks'] = lt.newList()
+
+    return catalog
+
 # Funciones para agregar informacion al catalogo
+
+def addArtWork(catalog, artwork):
+    lt.addLast(catalog['artworks'],artwork)
+
+def addArtist(catalog, artist):
+    lt.addLast(catalog['artist'],artist)
 
 # Funciones para creacion de datos
 
