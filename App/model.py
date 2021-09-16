@@ -26,6 +26,7 @@
 
 
 import config as cf
+import datetime as dt
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
 assert cf
@@ -59,5 +60,6 @@ def addArtist(catalog, artist):
 # Funciones de consulta
 
 # Funciones utilizadas para comparar elementos dentro de una lista
-
+def cmpArtworkByDateAcquired(artwork1, artwork2):
+    day=artwork1[12][0]+artwork1[12][1]
 # Funciones de ordenamiento
