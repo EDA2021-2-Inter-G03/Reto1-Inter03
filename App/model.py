@@ -29,7 +29,9 @@ from DISClib.DataStructures.arraylist import addLast
 import config as cf
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
-from DISClib.Algorithms.Sorting import insertionsort as insertion
+from DISClib.Algorithms.Sorting import insertionsort as ins
+from DISClib.Algorithms.Sorting import mergesort as mer
+from DISClib.Algorithms.Sorting import quicksort as qs
 assert cf
 
 """
@@ -144,4 +146,20 @@ def cmpfunctionDateAcquired(date1, date2):
     return State 
 # Funciones utilizadas para comparar elementos dentro de una lista
 
+# Funciones de ordenamiento
+def sortcatalog(catalogo,tipo_ordenamiento):
+    if tipo_ordenamiento == "1":
+         catalogo_ordenado = ins.sort(catalogo)
+    elif tipo_ordenamiento == "2":
+        catalogo_ordenado = mer.sort(catalogo)
+    elif tipo_ordenamiento == "3":
+        catalogo_ordenado = sa.sort(catalogo)
+    elif tipo_ordenamiento == "4":
+        catalogo_ordenado = qs.sort(catalogo)
+    else:
+        catalogo_ordenado = catalogo
+    return catalogo_ordenado
+    
+def cmpArtworkByDateAcquired(artwork1, artwork2):
+    day=artwork1[12][0]+artwork1[12][1]
 # Funciones de ordenamiento

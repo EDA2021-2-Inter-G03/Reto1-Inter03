@@ -20,6 +20,7 @@
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
+
 import config as cf
 import sys
 import controller
@@ -57,6 +58,19 @@ def loadData(catalog):
     Carga los libros en la estructura de datos
     """
     controller.loadData(catalog)
+
+def sublist(catalogo,muestra):
+    """
+    Crea una Sublista con un tamaño de muestra dado
+    """
+    if muestra <= lt.size(catalogo):
+        sublista = lt.subList(catalogo,0,muestra)
+    else:
+        sublista = "El tamaño de la muestra es mayor al tamaño del catalogo"
+    return sublista
+
+
+
 """
 Menu principal
 """
@@ -86,6 +100,23 @@ while True:
         print(model.ArtworkAcquired(catalog, date1, date2))
 
         pass
+    elif int(inputs[0]) == 2:
+        muestra = int(input("Escriba el tamaño de la muestra: "))
+        catalog = initCatalog()
+        loadData(catalog)
+        sublista = sublist(catalog["artworks"], muestra)
+        print(sublista)
+
+    elif int(inputs[0]) == 3:
+        print("Escoja el tipo de ordenamiento..")
+        print("1. Insertion")
+        print("2. Sheel")
+        print("3. Merge")
+        print("4. Quick")
+        tipo_ordenamiento = input("Escriba el numero de la opción: ")
+        catalog = initCatalog
+        loadData(catalog)
+        
 
     else:
         sys.exit(0)
