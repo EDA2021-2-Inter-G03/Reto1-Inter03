@@ -59,3 +59,11 @@ def loadArtists(catalog):
     input_file = csv.DictReader(open(artfile, encoding='utf-8'))  
     for artist in input_file:
         model.addArtist(catalog, artist)  
+
+def ordenamiento_cronologico(catalogo_principal, fecha_inicial, fecha_final):
+    lista_ordenada = model.ordenar_cronologicamente(catalogo_principal,fecha_inicial,fecha_final)
+    return lista_ordenada
+
+def clasificacion_tecnica(catalogo_principal, nombre):
+    lista_obras = model.clasificacion_tecnica(catalogo_principal,nombre)
+    return lista_obras

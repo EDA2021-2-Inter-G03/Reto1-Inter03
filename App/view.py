@@ -21,11 +21,13 @@
  """
 
 
+from typing import final
 import config as cf
 import sys
 import controller
 from DISClib.ADT import list as lt
 assert cf
+
 
 
 """
@@ -39,12 +41,13 @@ def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
     print("2. Tamaño de la muestra")
-    print("3- requerimiento 1")
-    print("4- requerimiento 2")
-    print("5- requerimiento 3")
-    print("6- requerimiento 4")
-    print("7- requerimiento 5")
-    print("8- requerimiento 6")
+    print("3. Tipo de ordenamiento")#completar y comprobar
+    print("4- requerimiento 1")
+    print("5- requerimiento 2")
+    print("6- requerimiento 3")
+    print("7- requerimiento 4")
+    print("8- requerimiento 5")
+    print("9- requerimiento 6")
 
 catalog = None
 
@@ -138,6 +141,36 @@ while True:
         catalog = initCatalog
         loadData(catalog)
         
+    elif int(inputs[0]) == 4:
+        
+        catalogo = initCatalog()
+        loadData(catalogo)
+        año_inicial = input("Escriba el año de busqueda inicial: ")
+        año_final = input("Escribe el año de busqueda final: ")
+        
+        lista = controller.ordenamiento_cronologico(catalogo,año_inicial,año_final)
+        i = 0
+        tamaño_final=lt.size(lista)
+        while i<=tamaño_final:
+            artista = lt.getElement(lista,i)
+            if i == 1 or  i == 2 or i == 3 or i == (int(tamaño_final)-2) or i == (int(tamaño_final)-1) or i == (int(tamaño_final)):
+                print(artista["ConstituentID"],"-",artista["DisplayName"],"-",artista["BeginDate"],"-",artista["Nationality"],"-",artista["Gender"],"-",artista["ArtistBio"],"-",artista["Wiki QID"],"-",artista["ULAN"])
+            i+=1
+    
+    elif int(inputs[0]) == 6:
+        catalogo = initCatalog()
+        loadData(catalogo)
+        nombre_artista = str(input("Escribe el nombre del artista: "))
+
+        lista = controller.clasificacion_tecnica(catalogo,nombre_artista)
+
+        i = 0
+        tamaño_final=lt.size(lista)
+        
+        while i<=tamaño_final:
+            obra = lt.getElement(lista,i)
+            print(obra["ObjectID"],"-",obra["Title"],"-",obra["Medium"],"-",obra["Date"],"-",obra["Dimensions"],"-",obra["Department"],"-",obra["Classification"],"-",obra["URL"])
+            i+=1
 
     else:
         sys.exit(0)
